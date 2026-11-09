@@ -1,0 +1,26 @@
+---
+- name: Base packages
+  ansible.builtin.apt:
+    name: "{{ common_packages }}"
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Group pollie
+  ansible.builtin.group:
+    name: pollie
+    system: true
+
+- name: User pollie (no login)
+  ansible.builtin.user:
+    name: pollie
+    group: pollie
+    system: true
+    shell: /usr/sbin/nologin
+    create_home: false
+
+- name: Message of the day
+  ansible.builtin.template:
+    src: motd.j2
+    dest: /etc/motd
+    mode: "0644"

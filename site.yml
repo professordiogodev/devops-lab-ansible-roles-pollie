@@ -1,0 +1,15 @@
+---
+# TODO: one play per tier, applying the roles. Provided: the common role.
+#
+#   servers -> common
+#   db      -> database   (you write it)
+#   app     -> pollie     (you write it)
+#   web     -> web        (you write it)
+#
+# Each play needs `become: true`. Give the plays tags (for example `db`, `pollie`, `web`)
+# so that you can apply one tier at a time.
+- name: Baseline
+  hosts: servers
+  become: true
+  roles:
+    - common

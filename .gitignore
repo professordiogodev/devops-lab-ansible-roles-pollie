@@ -1,0 +1,9 @@
+.DS_Store
+*.pem
+*.tfstate*
+.env
+__pycache__/
+keys/
+pollie/
+.ansible/
+*.retry

@@ -1,0 +1,9 @@
+---
+# Provided. Settings every role can use.
+# WARNING: these passwords are in plain text so that you can see the stack work first.
+# They are not production material. The next lab (Ansible Vault) fixes that.
+pollie_db_name: pollie
+pollie_db_user: pollie
+pollie_db_password: "p@ss/w0rd:42"
+redis_password: "r3dis/s3cret:1"
+pollie_api_port: 8000
