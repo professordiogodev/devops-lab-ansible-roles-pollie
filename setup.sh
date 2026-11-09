@@ -58,6 +58,6 @@ Three fresh Ubuntu 24.04 servers are running. Nothing is installed on them.
 
   user: deploy (passwordless sudo)     key: keys/id_ed25519
 
-Try it by hand first:  ssh -i keys/id_ed25519 -p 2231 deploy@127.0.0.1
+Try it by hand first:  ssh -i keys/id_ed25519 -o IdentitiesOnly=yes -p 2231 deploy@127.0.0.1
 (Add  -o StrictHostKeyChecking=no  if SSH complains about an unknown or changed host key: the servers are new every time.)
 TXT
