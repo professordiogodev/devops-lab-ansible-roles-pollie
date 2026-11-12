@@ -22,13 +22,20 @@
 
 ## 🎬 The situation
 
-<p align="center"><img src="assets/gifs/situation.gif" width="300" alt="Animation: ansible-playbook site.yml"></p>
+<p align="center"><img src="assets/gifs/situation.gif" width="300" alt="Roles being combined into one playbook for three servers"></p>
 
-Last week you proved that Ansible can configure three servers the same way every time. Now the real application is coming: **Pollie**, the polls app, with a website, an API, a vote worker, PostgreSQL and Redis.
+```text
+RECIPE CARD - Pollie, three servers
+Serves      : website, API, vote worker, PostgreSQL, Redis
+Kitchen     : web (1 server) | app (API + worker) | data (PostgreSQL + Redis)
+Ingredients : roles database, pollie, web, and one from Galaxy
+Seasoning   : Jinja2 templates, one per config file
+Method      : restart a service only when its ingredients changed (handlers)
+Leftovers   : another team reuses this next month, and a colleague
+              changes a setting without ever logging in to a server
+```
 
-Production will not run everything on one machine. The website goes on one server, the API and the worker on a second one, and the databases on a third, so each can be secured, scaled and replaced on its own. Another team will reuse your work for their own project next month, and a colleague will change settings without ever logging in to a server.
-
-A single 300-line playbook is not reusable and nobody wants to review it. You will split the work into **roles**, render configuration with **Jinja2 templates**, and let **handlers** restart services only when something changed.
+Last week you proved that Ansible configures three servers the same way every time. Now the real application is coming, and production will not run everything on one machine: each tier is secured, scaled and replaced on its own. A single 300-line playbook is not reusable and nobody wants to review it, so you will split the work into **roles**, render configuration with **templates** and let **handlers** do the restarts. This is a long recipe. Take it one course at a time.
 
 > [!IMPORTANT]
 > **Your mission**
